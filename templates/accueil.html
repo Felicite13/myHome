@@ -1,62 +1,130 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}Accueil{% endblock %}
 
 {% block content %}
-  <h1>Bienvenue sur My Home</h1>
-  <p>
-    My Home est une plateforme intelligente et conviviale qui révolutionne la manière dont vous interagissez avec votre maison. Grâce à notre interface simple et intuitive, vous pouvez gérer, en quelques clics, tous vos objets connectés répartis dans chaque pièce de votre logement.
+  <!-- Bienvenue -->
+  <section class="mb-10">
+    <h2 class="text-2xl font-semibold mb-2">Bienvenue sur MyHome</h2>
+    <p class="mb-4">Découvrez notre solution informatique qui connecte votre maison pour plus de confort, de sécurité et d’économies.</p>
+    <div class="text-center mt-6">
+      <a href="{% url 'register' %}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-300">
+        Commencez ici
+      </a>
+    </div>
 
-Que ce soit pour allumer une lumière, ajuster la température d’un thermostat, lancer votre enceinte préférée avec une playlist de rap français, ou encore baisser les volets roulants, My Home centralise toutes les commandes pour une expérience fluide, moderne et totalement personnalisée.
+    <div class="my-8"></div> 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+      <img src="{% static 'images/maison.jpg' %}" alt="Maison connectée" class="rounded shadow-md">
+      <img src="{% static 'images/maison2.jpg' %}" alt="Maison connectée" class="rounded shadow-md">
+    </div>
+    <div class="my-8"></div> 
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">A propos</h2>
+        My Home est une plateforme intelligente et conviviale qui révolutionne la manière dont vous interagissez avec votre maison. Grâce à notre interface simple et intuitive, vous pouvez gérer, en quelques clics, tous vos objets connectés répartis dans chaque pièce de votre logement.
+        <br><br>
+        Que ce soit pour allumer une lumière, ajuster la température d’un thermostat, lancer votre enceinte préférée avec une playlist de rap français, ou encore baisser les volets roulants, My Home centralise toutes les commandes pour une expérience fluide, moderne et totalement personnalisée.
+        <br><br>
+        Pensée pour toute la famille, la plateforme s’adapte à chaque membre selon son rôle et son niveau d’usage : les plus jeunes bénéficient d’un accès restreint et sécurisé, tandis que les parents et experts peuvent modifier les paramètres, suivre les interactions et même ajouter de nouveaux objets à leur environnement connecté.
+        <br><br>
+        L’objectif est simple : vous offrir confort, sécurité et autonomie, tout en restant maître de votre consommation et de votre foyer.
+      </p>
 
-Pensée pour toute la famille, la plateforme s’adapte à chaque membre selon son rôle et son niveau d’usage : les plus jeunes bénéficient d’un accès restreint et sécurisé, tandis que les parents et experts peuvent modifier les paramètres, suivre les interactions et même ajouter de nouveaux objets à leur environnement connecté.
 
-L’objectif est simple : vous offrir confort, sécurité et autonomie, tout en restant maître de votre consommation et de votre foyer.
-  </p>
 
+  <!-- Liste des actualités -->
+  <section class="mt-8">
+    <h2 class="text-2xl font-semibold mb-4">Actualités</h2>
+    <ul class="space-y-4">
+      <li class="transform hover:scale-105 transition-all duration-300 bg-gray-100 p-4 rounded shadow-md">
+        <h3 class="font-semibold text-lg">Nouvelle mise à jour</h3>
+        <p>Contrôle vocal pour les volets roulants.</p>
+      </li>
+      <li class="transform hover:scale-105 transition-all duration-300 bg-gray-100 p-4 rounded shadow-md">
+        <h3 class="font-semibold text-lg">Offre spéciale</h3>
+        <p>-20% sur les ampoules Philips Hue jusqu’au 30 avril.</p>
+      </li>
+      <li class="transform hover:scale-105 transition-all duration-300 bg-gray-100 p-4 rounded shadow-md">
+        <h3 class="font-semibold text-lg">Nouveau produit</h3>
+        <p>Découvrez notre nouveau frigo connecté avec alertes de péremption.</p>
+      </li>
+    </ul>
+    
+  </section>
   <hr>
 
-  <h2>Rechercher un objet connecté</h2>
-  <form method="get">
-    <input type="text" name="recherche" placeholder="Rechercher par nom..." value="{{ texte }}">
 
-    <select name="type">
-      <option value="">-- Filtrer par type --</option>
-      {% for t in types %}
-        <option value="{{ t }}" {% if t == selected_type %}selected{% endif %}>{{ t }}</option>
-      {% endfor %}
-    </select>
+<!-- Section Recherche d'objets connectés -->
+<section class="mt-10">
+  <h2 class="text-2xl font-semibold mb-4">Rechercher un objet connecté</h2>
 
-    <button type="submit">Rechercher</button>
+  <form method="get" class="bg-white p-6 rounded shadow-md space-y-4 mb-8">
+    <!-- Champ : Nom de l'objet -->
+    <div>
+      <label for="recherche" class="block text-gray-700 font-medium mb-1">Nom de l'objet</label>
+      <input type="text" name="recherche" id="recherche" placeholder="Ex : lampe, TV..." value="{{ texte }}"
+             class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+
+    <!-- Champ : Type d'objet -->
+    <div>
+      <label for="type" class="block text-gray-700 font-medium mb-1">Type d'objet</label>
+      <select name="type" id="type"
+              class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">-- Tous les types --</option>
+        {% for t in types %}
+          <option value="{{ t }}" {% if t == selected_type %}selected{% endif %}>{{ t }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Bouton centré -->
+    <div class="text-center pt-2">
+      <button type="submit"
+              class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition duration-300">
+        Rechercher
+      </button>
+    </div>
   </form>
+</section>
 
-  <hr>
 
-  <h3>Résultats :</h3>
+<!-- Résultats -->
+<section>
+  <h3 class="text-xl font-semibold mb-4">Résultats</h3>
 
   {% if objets %}
-    {% for objet in objets %}
-      <div class="objet-card">
-        <i class="objet-icon
-          {% if objet.type_objet == 'lumière' %}fas fa-lightbulb
-          {% elif objet.type_objet == 'téléviseur' %}fas fa-tv
-          {% elif objet.type_objet == 'enceinte' %}fas fa-volume-up
-          {% elif objet.type_objet == 'thermostat' %}fas fa-thermometer-half
-          {% elif objet.type_objet == 'clé wifi' %}fas fa-wifi
-          {% elif objet.type_objet == 'détecteur de fumée' %}fas fa-fire-alt
-          {% elif objet.type_objet == 'store' or objet.type_objet == 'parasol' or objet.type_objet == 'volet' %}fas fa-window-maximize
-          {% else %}fas fa-cube{% endif %}
-        "></i>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for objet in objets %}
+  <div class="flex items-start space-x-4 bg-gray-100 p-4 rounded shadow-md hover:shadow-lg transition-transform transform hover:scale-105 cursor-pointer">
+    <i class="text-3xl text-blue-600
+      {% if objet.type_objet == 'lumière' %}fas fa-lightbulb
+      {% elif objet.type_objet == 'téléviseur' %}fas fa-tv
+      {% elif objet.type_objet == 'enceinte' %}fas fa-volume-up
+      {% elif objet.type_objet == 'thermostat' %}fas fa-thermometer-half
+      {% elif objet.type_objet == 'clé wifi' %}fas fa-wifi
+      {% elif objet.type_objet == 'détecteur de fumée' %}fas fa-fire-alt
+      {% elif objet.type_objet in 'store parasol volet' %}fas fa-window-maximize
+      {% else %}fas fa-cube{% endif %}
+    "></i>
 
-        <div class="objet-info">
-          <h4>{{ objet.nom }}</h4>
-          <span>Type : {{ objet.type_objet }} ({{ objet.piece.nom }}){% if objet.etat %} | État : {{ objet.etat }}{% endif %}</span>
-        </div>
-      </div>
-    {% endfor %}
+    <div>
+      <h4 class="font-bold text-lg">{{ objet.nom }}</h4>
+      <p class="text-sm text-gray-600">
+        Type : {{ objet.type_objet }}<br>
+        Pièce : {{ objet.piece.nom }}{% if objet.etat %}<br>État : {{ objet.etat }}{% endif %}
+      </p>
+    </div>
+  </div>
+{% endfor %}
+
+    </div>
   {% else %}
-    <p>Aucun objet trouvé pour cette recherche.</p>
+    <p class="text-gray-500 italic">Aucun objet trouvé pour cette recherche.</p>
   {% endif %}
+</section>
+
+  
+
 {% endblock %}
-
-
-

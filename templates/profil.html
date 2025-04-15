@@ -2,38 +2,32 @@
 {% block title %}Mon Profil{% endblock %}
 
 {% block content %}
-  <h2>Mon profil</h2>
+  <div style="max-width: 600px; margin: auto; background-color: #f8f9fa; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+    <h2 style="text-align: center; margin-bottom: 30px;">Mon profil</h2>
 
-  {% if utilisateur.photo %}
-    <img src="{{ utilisateur.photo.url }}" alt="Photo de profil" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
-  {% else %}
-    <p><em>Aucune photo de profil</em></p>
-  {% endif %}
+    <div style="text-align: center;">
+      {% if utilisateur.photo %}
+        <img src="{{ utilisateur.photo.url }}" alt="Photo de profil"
+             style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #1A3557; margin-bottom: 20px;">
+      {% else %}
+        <div style="width: 150px; height: 150px; border-radius: 50%; background-color: #ccc; margin: auto; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #666; margin-bottom: 20px;">
+          Aucune photo
+        </div>
+      {% endif %}
+    </div>
 
-  <ul>
-    <li><strong>Pseudonyme :</strong> {{ utilisateur.username }}</li>
-    <li><strong>Adresse e-mail :</strong> {{ utilisateur.email }}</li>
-    <li><strong>Âge :</strong> {{ utilisateur.age }}</li>
-    <li><strong>Date de naissance :</strong> {{ utilisateur.birth_date|date:"d/m/Y" }}</li>
-    <li><strong>Type de membre :</strong> {{ utilisateur.type_membre }}</li>
-    <li><strong>Niveau :</strong> {{ utilisateur.niveau }}</li>
-    <li><strong>Points :</strong> {{ utilisateur.points }}</li>
-  </ul>
+    <ul style="list-style: none; padding: 0; font-size: 16px; color: #333;">
+      <li><strong>Pseudonyme :</strong> {{ utilisateur.username }}</li>
+      <li><strong>Adresse e-mail :</strong> {{ utilisateur.email }}</li>
+      <li><strong>Âge :</strong> {{ utilisateur.age }}</li>
+      <li><strong>Date de naissance :</strong> {{ utilisateur.birth_date }}</li>
+      <li><strong>Type de membre :</strong> {{ utilisateur.type_membre }}</li>
+      <li><strong>Niveau :</strong> {{ utilisateur.niveau }}</li>
+      <li><strong>Points :</strong> {{ utilisateur.points }}</li>
+    </ul>
 
-  <hr>
-  <h3>Ajouter / Modifier la photo de profil</h3>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Mettre à jour la photo</button>
-  </form>
-  <p>
-    <a href="{% url 'modifier_profil' %}" class="btn btn-secondary">Modifier mon profil</a>
-  </p>
-  
-
-
-  <p style="margin-top: 20px;"><a href="/">Retour à l’accueil</a></p>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="/" style="color: white; background-color: #1A3557; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;">Retour à l’accueil</a>
+    </div>
+  </div>
 {% endblock %}
-
-

@@ -1,68 +1,90 @@
 /* ---------- Reset & Base ---------- */
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #F5F8FC;
     color: #333;
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
     color: #1A3557;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px; /* Légère espacement entre les lettres */
 }
 
 a {
+    font-family: 'Montserrat', sans-serif;
     color: #1A3557;
     text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #0077cc;
+    transform: scale(1.05); /* Agrandissement subtil au survol */
 }
 
-/* ---------- Navigation ---------- */
+/* ---------- Navigation (bannière) ---------- */
+header {
+    background-color: #003366; /* Fond bleu foncé */
+    color: white; /* Texte en blanc */
+    text-align: center;
+    padding: 20px 0;
+}
+
 nav {
-    background-color: #f0f0f0;
-    padding: 15px;
-    border-bottom: 2px solid #ccc;
-    font-family: 'Oswald', sans-serif;
+    max-width: 7xl;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #003366; /* bleu navy foncé lisible */
-    margin: 0 12px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s ease;
+    color: #ffffff; /* Texte bleu foncé par défaut */
+    margin: 0 18px;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
-    color: #0077cc; /* bleu un peu plus clair au survol */
+    color: white; /* Texte blanc au survol */
+    background-color: #ffffff; /* Fond bleu clair au survol */
+    transform: scale(1.05); /* Agrandissement au survol */
+    border-radius: 8px; /* Coins arrondis au survol */
 }
 
 nav span {
-    font-size: 22px;
-    color: #003366;
-    margin-right: 25px;
-    font-weight: 700;
+    font-size: 24px; /* Taille du texte */
+    font-weight: 400; /* Normal (sans gras) */
+    color: white; /* Le titre "MY HOME" en blanc */
 }
+
 
 
 /* ---------- Contenu principal ---------- */
 main {
-    padding: 40px 20px;
+    
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px 30px;
     max-width: 1000px;
-    margin: auto;
+    margin: 20px auto;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
 }
 
 ul {
+    font-family: 'Montserrat', sans-serif;
     list-style: disc inside;
     margin-bottom: 20px;
+    padding-left: 20px;
 }
 
 /* ---------- Formulaires ---------- */
@@ -73,79 +95,113 @@ input[type="number"],
 input[type="date"],
 select,
 textarea {
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px;
+    padding: 12px;
+    margin: 12px 0 20px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 8px;
     box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #0077cc; /* Changement de couleur au focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 119, 204, 0.5); /* Ombre douce */
 }
 
 /* ---------- Boutons ---------- */
 button, .btn {
+    font-family: 'Montserrat', sans-serif;
     background-color: #1A3557;
     color: white;
-    padding: 10px 16px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover, .btn:hover {
     background-color: #142945;
+    transform: scale(1.05); /* Zoom léger au survol */
+}
+
+button:focus, .btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 119, 204, 0.6); /* Effet de glow au focus */
 }
 
 /* ---------- Tableaux ---------- */
 table {
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px;
+    border: 1px solid #e1e8f0;
     text-align: left;
+    transition: background-color 0.3s ease;
 }
 
 th {
-    background-color: #e9f1fa;
+    background-color: #f1f7fc;
     color: #1A3557;
-    font-weight: bold;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f9f9f9; /* Survol léger des lignes */
 }
 
 /* ---------- Footer ---------- */
 footer {
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: #999;
-    margin-top: 30px;
-    padding-bottom: 20px;
+    margin-top: 40px;
+    padding-bottom: 30px;
 }
 
 /* ---------- Cartes Objets Connectés ---------- */
 .objet-card {
+    font-family: 'Montserrat', sans-serif;
     background-color: #ffffff;
     border: 1px solid #cce0f5;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 12px 0;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
     display: flex;
     align-items: center;
-    gap: 16px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s ease;
+    gap: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .objet-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-8px); /* Plus de profondeur au survol */
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2); /* Ombre plus marquée */
 }
 
 .objet-icon {
-    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
     color: #1A3557;
-    width: 35px;
+    width: 40px;
 }
 
 .objet-info {
@@ -153,90 +209,32 @@ footer {
 }
 
 .objet-info h4 {
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     color: #1A3557;
+    font-size: 18px;
 }
 
 .objet-info span {
-    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
     color: #666;
 }
 
-.titre-famille {
-  text-align: center;
-  color: #1a3557;
-  font-size: 32px;
-  margin-bottom: 40px;
-  font-family: 'Oswald', sans-serif;
+/* ---------- Design Responsive ---------- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .objet-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    button, .btn {
+        width: 100%;
+        padding: 12px 0;
+    }
 }
-
-<style>
-.titre-famille {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
-  color: #0d1b2a;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.grille-famille {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-}
-
-.carte-membre {
-  background-color: #ffffff;
-  border: 1px solid #dee2e6;
-  border-radius: 15px;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  transition: transform 0.2s;
-}
-
-.carte-membre:hover {
-  transform: translateY(-5px);
-}
-
-.photo-profil {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-  border: 2px solid #0d1b2a;
-}
-
-.photo-vide {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 36px;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.prenom {
-  font-weight: bold;
-  font-size: 18px;
-  font-family: 'Oswald', sans-serif;
-  margin: 5px 0;
-}
-
-.age {
-  color: #555;
-  font-family: 'Oswald', sans-serif;
-}
-</style>
-
-    
-  
-  
-
