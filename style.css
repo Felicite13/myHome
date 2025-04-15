@@ -1,0 +1,239 @@
+/* ---------- Reset & Base ---------- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F8FC;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #1A3557;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px; /* Légère espacement entre les lettres */
+}
+
+a {
+    font-family: 'Montserrat', sans-serif;
+    color: #1A3557;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    color: #0077cc;
+    transform: scale(1.05); /* Agrandissement subtil au survol */
+}
+
+/* ---------- Navigation (bannière) ---------- */
+header {
+    background-color: #003366; /* Fond bleu foncé */
+    color: white; /* Texte en blanc */
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    max-width: 7xl;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav a {
+    color: #ffffff; /* Texte bleu foncé par défaut */
+    margin: 0 18px;
+    font-weight: 500;
+    font-size: 18px;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    color: white; /* Texte blanc au survol */
+    background-color: #ffffff; /* Fond bleu clair au survol */
+    transform: scale(1.05); /* Agrandissement au survol */
+    border-radius: 8px; /* Coins arrondis au survol */
+}
+
+nav span {
+    font-size: 24px; /* Taille du texte */
+    font-weight: 400; /* Normal (sans gras) */
+    color: white; /* Le titre "MY HOME" en blanc */
+}
+
+
+
+/* ---------- Contenu principal ---------- */
+main {
+    font-family: 'Montserrat', sans-serif;
+    padding: 40px 30px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+}
+
+ul {
+    font-family: 'Montserrat', sans-serif;
+    list-style: disc inside;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+/* ---------- Formulaires ---------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #0077cc; /* Changement de couleur au focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 119, 204, 0.5); /* Ombre douce */
+}
+
+/* ---------- Boutons ---------- */
+button, .btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1A3557;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: #142945;
+    transform: scale(1.05); /* Zoom léger au survol */
+}
+
+button:focus, .btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 119, 204, 0.6); /* Effet de glow au focus */
+}
+
+/* ---------- Tableaux ---------- */
+table {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+th, td {
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px;
+    border: 1px solid #e1e8f0;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+th {
+    background-color: #f1f7fc;
+    color: #1A3557;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f9f9f9; /* Survol léger des lignes */
+}
+
+/* ---------- Footer ---------- */
+footer {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin-top: 40px;
+    padding-bottom: 30px;
+}
+
+/* ---------- Cartes Objets Connectés ---------- */
+.objet-card {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #cce0f5;
+    border-radius: 12px;
+    padding: 18px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.objet-card:hover {
+    transform: translateY(-8px); /* Plus de profondeur au survol */
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2); /* Ombre plus marquée */
+}
+
+.objet-icon {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: #1A3557;
+    width: 40px;
+}
+
+.objet-info {
+    flex-grow: 1;
+}
+
+.objet-info h4 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: #1A3557;
+    font-size: 18px;
+}
+
+.objet-info span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: #666;
+}
+
+/* ---------- Design Responsive ---------- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .objet-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    button, .btn {
+        width: 100%;
+        padding: 12px 0;
+    }
+}
