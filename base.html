@@ -22,6 +22,8 @@
     <a href="{% url 'maison' %}" class="text-white hover:text-blue-800">Maison</a>
     <a href="{% url 'profil' %}" class="text-white hover:text-blue-800">Mon profil</a>
     <a href="{% url 'regles' %}" class="text-white hover:text-blue-800">Règles</a>
+    <a href="{% url 'ma_famille' %}" class="text-white hover:text-blue-800">Ma famille</a>
+
     
     {% if user.niveau in "avancé expert" %}
         <a href="{% url 'statistiques' %}" class="text-white hover:text-blue-800">Statistiques</a>
