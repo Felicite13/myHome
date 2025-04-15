@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import ObjetConnecte, Interaction
 from django.utils.timezone import now
 from .models import Piece
+from users.decorators import profil_valide_required
 
 @login_required
+@profil_valide_required
 def maison_view(request):
     pieces = Piece.objects.all()
     return render(request, 'maison.html', {'pieces': pieces})

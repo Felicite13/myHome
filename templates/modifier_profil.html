@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block content %}
+  <h2>Modifier mon profil</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enregistrer les modifications</button>
+  </form>
+
+  <p><a href="{% url 'profil' %}">Retour au profil</a></p>
+{% endblock %}

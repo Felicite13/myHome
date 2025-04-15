@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Compte activé{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; margin-top: 50px;">
+    <h2 style="color: #1A3557;">🎉 Compte activé avec succès !</h2>
+    <p style="font-size: 18px; margin-top: 20px;">
+      Votre compte est maintenant actif.<br>
+      Vous êtes connecté automatiquement. Vous pouvez accéder à votre tableau de bord.
+    </p>
+    <p style="margin-top: 30px;">
+      <a href="{% url 'profil' %}" class="btn">→ Accéder à mon profil</a>
+    </p>
+  </div>
+{% endblock %}

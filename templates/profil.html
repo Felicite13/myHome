@@ -14,12 +14,26 @@
     <li><strong>Pseudonyme :</strong> {{ utilisateur.username }}</li>
     <li><strong>Adresse e-mail :</strong> {{ utilisateur.email }}</li>
     <li><strong>Âge :</strong> {{ utilisateur.age }}</li>
-    <li><strong>Date de naissance :</strong> {{ utilisateur.birth_date }}</li>
+    <li><strong>Date de naissance :</strong> {{ utilisateur.birth_date|date:"d/m/Y" }}</li>
     <li><strong>Type de membre :</strong> {{ utilisateur.type_membre }}</li>
     <li><strong>Niveau :</strong> {{ utilisateur.niveau }}</li>
     <li><strong>Points :</strong> {{ utilisateur.points }}</li>
   </ul>
 
-  <p><a href="/">Retour à l’accueil</a></p>
+  <hr>
+  <h3>Ajouter / Modifier la photo de profil</h3>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Mettre à jour la photo</button>
+  </form>
+  <p>
+    <a href="{% url 'modifier_profil' %}" class="btn btn-secondary">Modifier mon profil</a>
+  </p>
+  
+
+
+  <p style="margin-top: 20px;"><a href="/">Retour à l’accueil</a></p>
 {% endblock %}
+
 

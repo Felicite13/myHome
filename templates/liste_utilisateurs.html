@@ -4,6 +4,16 @@
 {% block content %}
 <h2>Modifier les rôles des utilisateurs</h2>
 
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %}; font-weight: bold;">
+        {{ message }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
 <table border="1" cellpadding="8" cellspacing="0">
   <tr>
     <th>Nom d'utilisateur</th>
@@ -11,15 +21,21 @@
     <th>Nouveau rôle</th>
     <th>Niveau actuel</th>
     <th>Nouveau niveau</th>
-    <th>Actions</th>
+    <th>Profil validé ?</th>
+    <th>Action</th>
   </tr>
 
   {% for utilisateur in utilisateurs %}
-    <tr>
-      <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="user_id" value="{{ utilisateur.id }}">
-        <td>{{ utilisateur.username }}</td>
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="user_id" value="{{ utilisateur.id }}">
+      <tr>
+        <td>
+          <a href="{% url 'fiche_utilisateur' utilisateur.id %}" style="font-weight: bold; color: navy;">
+            {{ utilisateur.username }}
+          </a>
+        </td>
+        
         <td>{{ utilisateur.type_membre }}</td>
         <td>
           <select name="type_membre">
@@ -37,12 +53,23 @@
             <option value="expert" {% if utilisateur.niveau == 'expert' %}selected{% endif %}>Expert</option>
           </select>
         </td>
-        <td><button type="submit">Mettre à jour</button><br>
-          <a href="{% url 'voir_interactions_utilisateur' utilisateur.id %}" style="color: blue;">Voir les interactions</a>
+        <td>
+          {% if utilisateur.est_valide %}
+            ✅ Oui
+          {% else %}
+            ❌ Non
+            <button type="submit" name="valider">Valider</button>
+          {% endif %}
         </td>
-      </form>
-    </tr>
+        <td>
+          <button type="submit" name="modifier">Mettre à jour</button><br>
+          <a href="{% url 'voir_interactions_utilisateur' utilisateur.id %}" style="color: blue;">Voir les interactions</a><br>
+          <button type="submit" name="supprimer" style="margin-top: 6px; color: red;" onclick="return confirm('Supprimer cet utilisateur ?')">Supprimer</button>
+        </td>
+      </tr>
+    </form>
   {% endfor %}
 </table>
 {% endblock %}
+
 

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Compte en attente de validation{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; margin-top: 60px;">
+    <h2 style="color: #1A3557;">🕒 Validation en attente</h2>
+    <p style="font-size: 18px; color: #444; margin-top: 20px;">
+      Votre compte a bien été créé, mais il doit encore être validé par un administrateur de la maison.
+    </p>
+    <p style="font-size: 16px; margin-top: 10px;">
+      Dès que votre profil sera validé, vous recevrez un e-mail de confirmation<br>
+      et vous pourrez accéder à toutes les fonctionnalités de My Home.
+    </p>
+    <p style="margin-top: 40px;">
+      <a href="{% url 'logout' %}" class="btn" style="background-color: #1A3557; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
+        Se déconnecter
+      </a>
+    </p>
+  </div>
+{% endblock %}
+

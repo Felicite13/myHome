@@ -31,7 +31,7 @@ urlpatterns = [
     path('', accueil_view, name='accueil'),
     path('admin/', admin.site.urls),
     path('', lambda request: render(request, 'index.html')),
-    path('', include('users.urls')),  # inclut les URL d’inscription
+    path('', include('users.urls')),  
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('', include('objets.urls')),

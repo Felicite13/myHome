@@ -8,6 +8,12 @@ class User(AbstractUser):
     niveau = models.CharField(max_length=15, default="débutant")
     points = models.FloatField(default=0.0)
     photo = models.ImageField(upload_to='photos_profil/', null=True, blank=True)  #
+    est_valide = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if self.is_superuser:
+            self.est_valide = True
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username

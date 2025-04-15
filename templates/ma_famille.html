@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Ma famille{% endblock %}
+
+{% block content %}
+<h2 class="titre-famille">Membres de la famille</h2>
+
+<div class="grille-famille">
+  {% for membre in membres %}
+    <div class="carte-membre">
+      {% if membre.photo %}
+        <img src="{{ membre.photo.url }}" alt="Photo de {{ membre.username }}" class="photo-profil">
+      {% else %}
+        <div class="photo-vide">?</div>
+      {% endif %}
+      <p class="prenom">{{ membre.username }}</p>
+      <p class="age">{{ membre.age }} ans</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+

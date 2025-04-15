@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Profil de {{ utilisateur.username }}{% endblock %}
+
+{% block content %}
+<h2>Profil de {{ utilisateur.username }}</h2>
+
+{% if utilisateur.photo %}
+  <img src="{{ utilisateur.photo.url }}" alt="Photo de profil" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+{% else %}
+  <p><em>Aucune photo de profil</em></p>
+{% endif %}
+
+<ul>
+  <li><strong>Nom d'utilisateur :</strong> {{ utilisateur.username }}</li>
+  <li><strong>Email :</strong> {{ utilisateur.email }}</li>
+  <li><strong>Âge :</strong> {{ utilisateur.age }}</li>
+  <li><strong>Date de naissance :</strong> {{ utilisateur.birth_date }}</li>
+  <li><strong>Niveau :</strong> {{ utilisateur.niveau }}</li>
+  <li><strong>Type :</strong> {{ utilisateur.type_membre }}</li>
+  <li><strong>Validé ? :</strong> {{ utilisateur.est_valide }}</li>
+</ul>
+
+<a href="{% url 'liste_utilisateurs' %}">⬅️ Retour à la gestion</a>
+
+
+{% endblock %}
