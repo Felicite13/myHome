@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Accès restreint{% endblock %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 50px;">
+    <h2 style="color: #2c3e50;">⛔ Accès non autorisé</h2>
+    <p style="font-size: 18px; margin-top: 20px;">
+        Vous n'avez pas encore le niveau requis pour accéder à cette pièce.<br>
+        Continuez à vous connecter ou utiliser vos objets connectés pour gagner des points et débloquer de nouvelles fonctionnalités !
+    </p>
+    <p style="margin-top: 30px;">
+        <a href="{% url 'maison' %}" style="color: #1e90ff; font-weight: bold;">← Retour à la maison</a>
+    </p>
+</div>
+{% endblock %}

@@ -25,6 +25,22 @@ def register_view(request):
 
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.shortcuts import redirect
+from .models import User
+
+class CustomLoginView(LoginView):
+    def form_valid(self, form):
+        user = form.get_user()
+        if user:
+            user.points += 0.25
+            user.mettre_a_jour_niveau()
+            user.save()
+        login(self.request, user)
+        return redirect(self.get_success_url())
+
+
 @login_required
 def profil_view(request):
     utilisateur = request.user

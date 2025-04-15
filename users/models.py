@@ -11,4 +11,17 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+    
+    def mettre_a_jour_niveau(self):
+        if self.points >= 7:
+            self.niveau = "expert"
+        elif self.points >= 5:
+            self.niveau = "avancé"
+        elif self.points >= 3:
+            self.niveau = "intermédiaire"
+        else:
+            self.niveau = "debutant"
+        self.save()
+
+
 

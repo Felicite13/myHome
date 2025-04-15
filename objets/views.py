@@ -14,6 +14,7 @@ def voir_piece(request, id):
     piece = get_object_or_404(Piece, id=id)
     user = request.user
 
+
     if user.niveau not in ["intermédiaire", "avancé", "expert"]:
         return render(request, 'erreur.html', {'message': "Accès réservé à partir du niveau intermédiaire."})
 
@@ -62,6 +63,9 @@ def voir_objet(request, id):
             action=f"modification : {objet.nom}",
             points_gagnes=1.0
         )
+        if user.is_authenticated:
+            user.points += 0.5
+            user.mettre_a_jour_niveau()
 
         user.points += 1.0
         if user.points >= 7:
