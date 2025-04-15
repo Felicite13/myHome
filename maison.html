@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Ma Maison{% endblock %}
+
+{% block content %}
+  <h2 style="font-size: 24px; margin-bottom: 20px;">Mes pièces</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+    {% for piece in pieces %}
+      <form action="{% url 'voir_piece' piece.id %}" method="get" style="text-align: center;">
+        <button 
+          style="
+            width: 100%;
+            padding: 20px;
+            background-color: #1A3557;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          "
+          onmouseover="this.style.backgroundColor='#142945'; this.style.transform='scale(1.03)'"
+          onmouseout="this.style.backgroundColor='#1A3557'; this.style.transform='scale(1)'"
+        >
+          {% if 'salon' in piece.nom|lower %}
+            <i class="fas fa-couch fa-2x mb-2"></i>
+          {% elif 'cuisine' in piece.nom|lower %}
+            <i class="fas fa-utensils fa-2x mb-2"></i>
+          {% elif 'chambre' in piece.nom|lower %}
+            <i class="fas fa-bed fa-2x mb-2"></i>
+          {% elif 'salle de bain' in piece.nom|lower or 'bain' in piece.nom|lower %}
+            <i class="fas fa-bath fa-2x mb-2"></i>
+          {% elif 'toilette' in piece.nom|lower %}
+            <i class="fas fa-toilet fa-2x mb-2"></i>
+          {% else %}
+            <i class="fas fa-door-open fa-2x mb-2"></i>
+          {% endif %}
+          <span style="margin-top: 10px;">{{ piece.nom }}</span>
+        </button>
+      </form>
+    {% empty %}
+      <p>Aucune pièce trouvée.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
