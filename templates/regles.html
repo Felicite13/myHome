@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Règles du système de points{% endblock %}
+
+{% block content %}
+  <h2>Règles du système de points et de progression</h2>
+
+  <p>Le site <strong>My Home</strong> utilise un système de points qui récompense votre interaction avec les objets connectés de la maison.</p>
+
+  <h3>Comment gagner des points ?</h3>
+  <ul>
+    <li>🔓 Connexion au site : <strong>+0.25 point</strong></li>
+    <li>🧠 Consultation ou modification d’un objet : <strong>+0.50 point</strong></li>
+  </ul>
+
+  <h3>Niveaux et accès</h3>
+  <table border="1" cellpadding="6">
+    <tr>
+      <th>Niveau</th>
+      <th>Points requis</th>
+      <th>Fonctionnalités débloquées</th>
+    </tr>
+    <tr>
+      <td>Débutant</td>
+      <td>1 point</td>
+      <td>Visualisation des pièces</td>
+    </tr>
+    <tr>
+      <td>Intermédiaire</td>
+      <td>3 points</td>
+      <td>Accès aux objets de la maison (lecture seule)</td>
+    </tr>
+    <tr>
+      <td>Avancé</td>
+      <td>5 points</td>
+      <td>Modification des objets connectés</td>
+    </tr>
+    <tr>
+      <td>Expert</td>
+      <td>7 points</td>
+      <td>Ajout/Suppression d’objets, gestion des utilisateurs, statistiques</td>
+    </tr>
+  </table>
+
+  <p>Plus vous interagissez avec les objets, plus vous progressez !</p>
+{% endblock %}

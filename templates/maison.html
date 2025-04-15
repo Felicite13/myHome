@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Ma Maison{% endblock %}
+
+{% block content %}
+  <h2>Mes pièces</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+    {% for piece in pieces %}
+      <form action="{% url 'voir_piece' piece.id %}" method="get">
+        <button style="padding: 10px 20px;">{{ piece.nom }}</button>
+      </form>
+    {% empty %}
+      <p>Aucune pièce trouvée.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

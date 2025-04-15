@@ -1,0 +1,164 @@
+/* ---------- Reset & Base ---------- */
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color: #F5F8FC;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #1A3557;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #1A3557;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Navigation ---------- */
+nav {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-bottom: 2px solid #ccc;
+    font-family: 'Oswald', sans-serif;
+}
+
+nav a {
+    text-decoration: none;
+    color: #003366; /* bleu navy foncé lisible */
+    margin: 0 12px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #0077cc; /* bleu un peu plus clair au survol */
+}
+
+nav span {
+    font-size: 22px;
+    color: #003366;
+    margin-right: 25px;
+    font-weight: 700;
+}
+
+
+/* ---------- Contenu principal ---------- */
+main {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+ul {
+    list-style: disc inside;
+    margin-bottom: 20px;
+}
+
+/* ---------- Formulaires ---------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* ---------- Boutons ---------- */
+button, .btn {
+    background-color: #1A3557;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover, .btn:hover {
+    background-color: #142945;
+}
+
+/* ---------- Tableaux ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #e9f1fa;
+    color: #1A3557;
+    font-weight: bold;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 30px;
+    padding-bottom: 20px;
+}
+
+/* ---------- Cartes Objets Connectés ---------- */
+.objet-card {
+    background-color: #ffffff;
+    border: 1px solid #cce0f5;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.objet-card:hover {
+    transform: translateY(-3px);
+}
+
+.objet-icon {
+    font-size: 28px;
+    color: #1A3557;
+    width: 35px;
+}
+
+.objet-info {
+    flex-grow: 1;
+}
+
+.objet-info h4 {
+    margin: 0;
+    color: #1A3557;
+}
+
+.objet-info span {
+    font-size: 14px;
+    color: #666;
+}
+

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter un objet connecté{% endblock %}
+
+{% block content %}
+<h2>Ajouter un objet connecté</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label>Nom :</label>
+  <input type="text" name="nom" required><br><br>
+
+  <label>Type :</label>
+  <select name="type_objet" required>
+    <option value="lumière">Lumière</option>
+    <option value="téléviseur">Téléviseur</option>
+    <option value="enceinte">Enceinte</option>
+    <option value="thermostat">Thermostat</option>
+    <option value="grille-pain">Grille-pain</option>
+    <option value="réfrigérateur">Réfrigérateur</option>
+    <option value="détecteur de fumée">Détecteur de fumée</option>
+    <option value="volet">Volet</option>
+    <option value="parasol">Parasol</option>
+    <option value="lit">Lit</option>
+    <option value="douche">Douche</option>
+    <option value="miroir">Miroir</option>
+    <option value="sèche-serviette">Sèche-serviette</option>
+    <option value="clé wifi">Clé Wi-Fi</option>
+    <option value="capteur d’eau">Capteur d’eau</option>
+  </select><br><br>
+
+  <label>État :</label>
+  <input type="text" name="etat"><br><br>
+
+  <label>Pièce :</label>
+  <select name="piece">
+    {% for piece in pieces %}
+      <option value="{{ piece.id }}">{{ piece.nom }}</option>
+    {% endfor %}
+  </select><br><br>
+
+  {# Champs spécifiques (facultatifs) #}
+  <label>Intensité :</label>
+  <input type="number" name="intensite" min="0" max="100"><br>
+
+  <label>Couleur :</label>
+  <input type="color" name="couleur"><br>
+
+  <label>Volume :</label>
+  <input type="number" name="volume" min="0" max="100"><br>
+
+  <label>Musique :</label>
+  <input type="text" name="musique"><br>
+
+  <label>Température :</label>
+  <input type="number" name="temperature" step="0.1"><br>
+
+  <label>Mode :</label>
+  <input type="text" name="mode"><br>
+
+  <label>Position :</label>
+  <input type="text" name="position"><br>
+
+  <label>Consommation eau :</label>
+  <input type="number" name="consommation_eau"><br><br>
+
+  <button type="submit">Ajouter</button>
+</form>
+{% endblock %}

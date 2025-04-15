@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Gérer les utilisateurs{% endblock %}
+
+{% block content %}
+<h2>Modifier les rôles des utilisateurs</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <tr>
+    <th>Nom d'utilisateur</th>
+    <th>Rôle actuel</th>
+    <th>Nouveau rôle</th>
+    <th>Niveau actuel</th>
+    <th>Nouveau niveau</th>
+    <th>Actions</th>
+  </tr>
+
+  {% for utilisateur in utilisateurs %}
+    <tr>
+      <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="user_id" value="{{ utilisateur.id }}">
+        <td>{{ utilisateur.username }}</td>
+        <td>{{ utilisateur.type_membre }}</td>
+        <td>
+          <select name="type_membre">
+            <option value="parent" {% if utilisateur.type_membre == 'parent' %}selected{% endif %}>Parent</option>
+            <option value="enfant" {% if utilisateur.type_membre == 'enfant' %}selected{% endif %}>Enfant</option>
+            <option value="autre" {% if utilisateur.type_membre == 'autre' %}selected{% endif %}>Autre</option>
+          </select>
+        </td>
+        <td>{{ utilisateur.niveau }}</td>
+        <td>
+          <select name="niveau">
+            <option value="débutant" {% if utilisateur.niveau == 'débutant' %}selected{% endif %}>Débutant</option>
+            <option value="intermédiaire" {% if utilisateur.niveau == 'intermédiaire' %}selected{% endif %}>Intermédiaire</option>
+            <option value="avancé" {% if utilisateur.niveau == 'avancé' %}selected{% endif %}>Avancé</option>
+            <option value="expert" {% if utilisateur.niveau == 'expert' %}selected{% endif %}>Expert</option>
+          </select>
+        </td>
+        <td><button type="submit">Mettre à jour</button><br>
+          <a href="{% url 'voir_interactions_utilisateur' utilisateur.id %}" style="color: blue;">Voir les interactions</a>
+        </td>
+      </form>
+    </tr>
+  {% endfor %}
+</table>
+{% endblock %}
+

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}{{ objet.nom }}{% endblock %}
+
+{% block content %}
+<h2>{{ objet.nom }}</h2>
+<p><strong>Type :</strong> {{ objet.type_objet }}</p>
+<p><strong>État actuel :</strong> {{ objet.etat }}</p>
+
+<form method="post">
+  {% csrf_token %}
+
+  {# Téléviseur, miroir, frigo, grille-pain, douche #}
+  {% if objet.type_objet in "téléviseur grille-pain réfrigérateur miroir douche détecteur de fumée" %}
+    <label>État :</label>
+    <select name="etat">
+      <option value="allumé" {% if objet.etat == 'allumé' %}selected{% endif %}>Allumé</option>
+      <option value="éteint" {% if objet.etat == 'éteint' %}selected{% endif %}>Éteint</option>
+    </select><br><br>
+
+  {% elif objet.type_objet == "lumière" %}
+    <label>État :</label>
+    <select name="etat">
+      <option value="allumé" {% if objet.etat == 'allumé' %}selected{% endif %}>Allumé</option>
+      <option value="éteint" {% if objet.etat == 'éteint' %}selected{% endif %}>Éteint</option>
+    </select><br><br>
+
+    <label>Intensité :</label>
+    <input type="range" name="intensite" min="0" max="100" value="{{ objet.intensite|default:50 }}"><br><br>
+
+    <label>Couleur :</label>
+    <input type="color" name="couleur" value="{{ objet.couleur|default:'#ffffff' }}"><br><br>
+
+  {% elif objet.type_objet == "enceinte" %}
+    <label>État :</label>
+    <select name="etat">
+      <option value="activée" {% if objet.etat == 'activée' %}selected{% endif %}>Activée</option>
+      <option value="désactivée" {% if objet.etat == 'désactivée' %}selected{% endif %}>Désactivée</option>
+    </select><br><br>
+
+    <label>Volume :</label>
+    <input type="range" name="volume" min="0" max="100" value="{{ objet.volume|default:50 }}"><br><br>
+
+    <label>Musique :</label>
+    <select name="musique">
+      <option value="Ninho - Jefe" {% if objet.musique == 'Ninho - Jefe' %}selected{% endif %}>Ninho - Jefe</option>
+      <option value="Ninho - Lettre à une femme" {% if objet.musique == 'Ninho - Lettre à une femme' %}selected{% endif %}>Ninho - Lettre à une femme</option>
+      <option value="Damso - Macarena" {% if objet.musique == 'Damso - Macarena' %}selected{% endif %}>Damso - Macarena</option>
+      <option value="Damso - Amnésie" {% if objet.musique == 'Damso - Amnésie' %}selected{% endif %}>Damso - Amnésie</option>
+      <option value="Tiakola - Meuda" {% if objet.musique == 'Tiakola - Meuda' %}selected{% endif %}>Tiakola - Meuda</option>
+      <option value="Tiakola - Gasolina" {% if objet.musique == 'Tiakola - Gasolina' %}selected{% endif %}>Tiakola - Gasolina</option>
+      <option value="Tiakola - Mode Avion" {% if objet.musique == 'Tiakola - Mode Avion' %}selected{% endif %}>Tiakola - Mode Avion</option>
+      <option value="Ninho - Promo" {% if objet.musique == 'Ninho - Promo' %}selected{% endif %}>Ninho - Promo</option>
+      <option value="Damso - Mosaïque Solitaire" {% if objet.musique == 'Damso - Mosaïque Solitaire' %}selected{% endif %}>Damso - Mosaïque Solitaire</option>
+      <option value="Tiakola - Pumba" {% if objet.musique == 'Tiakola - Pumba' %}selected{% endif %}>Tiakola - Pumba</option>
+    </select><br><br>
+
+  {% elif objet.type_objet == "thermostat" %}
+    <label>Température (°C):</label>
+    <input type="number" name="temperature" min="10" max="30" value="{{ objet.temperature }}"><br><br>
+
+    <label>Mode :</label>
+    <select name="mode">
+      <option value="éco" {% if objet.mode == 'éco' %}selected{% endif %}>Éco</option>
+      <option value="chaud" {% if objet.mode == 'chaud' %}selected{% endif %}>Chaud</option>
+      <option value="froid" {% if objet.mode == 'froid' %}selected{% endif %}>Froid</option>
+    </select><br><br>
+
+  {% elif objet.type_objet in "store parasol volet" %}
+    <label>Position :</label>
+    <select name="position">
+      <option value="monté" {% if objet.position == 'monté' %}selected{% endif %}>Monté</option>
+      <option value="mi-ouvert" {% if objet.position == 'mi-ouvert' %}selected{% endif %}>Mi-ouvert</option>
+      <option value="baissé" {% if objet.position == 'baissé' %}selected{% endif %}>Baissé</option>
+    </select><br><br>
+
+  {% elif objet.type_objet == "lit" %}
+    <label>Position :</label>
+    <select name="position">
+      <option value="à plat" {% if objet.position == 'à plat' %}selected{% endif %}>À plat</option>
+      <option value="relevé" {% if objet.position == 'relevé' %}selected{% endif %}>Relevé</option>
+    </select><br><br>
+
+    <label>Mode :</label>
+    <select name="mode">
+      <option value="veille" {% if objet.mode == 'veille' %}selected{% endif %}>Veille</option>
+      <option value="massage" {% if objet.mode == 'massage' %}selected{% endif %}>Massage</option>
+      <option value="réveil" {% if objet.mode == 'réveil' %}selected{% endif %}>Réveil</option>
+    </select><br><br>
+
+  {% elif objet.type_objet == "sèche-serviette" %}
+    <label>État :</label>
+    <select name="etat">
+      <option value="allumé" {% if objet.etat == 'allumé' %}selected{% endif %}>Allumé</option>
+      <option value="éteint" {% if objet.etat == 'éteint' %}selected{% endif %}>Éteint</option>
+    </select><br><br>
+
+    <label>Température :</label>
+    <input type="number" name="temperature" value="{{ objet.temperature }}"><br><br>
+
+  {% elif objet.type_objet == "clé wifi" %}
+    <label>État :</label>
+    <select name="etat">
+      <option value="activée" {% if objet.etat == 'activée' %}selected{% endif %}>Activée</option>
+      <option value="désactivée" {% if objet.etat == 'désactivée' %}selected{% endif %}>Désactivée</option>
+    </select><br><br>
+
+  {% elif objet.type_objet == "capteur d’eau" %}
+    <label>Consommation actuelle (L) :</label>
+    <input type="number" name="consommation_eau" value="{{ objet.consommation_eau }}"><br><br>
+
+  {% endif %}
+
+  <button type="submit">Mettre à jour</button>
+</form>
+
+<p><a href="{% url 'voir_piece' objet.piece.id %}">← Retour à {{ objet.piece.nom }}</a></p>
+{% endblock %}
+

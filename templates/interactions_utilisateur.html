@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Historique de {{ utilisateur_cible.username }}{% endblock %}
+
+{% block content %}
+  <h2>Historique des interactions de {{ utilisateur_cible.username }}</h2>
+
+  <ul>
+    <li><strong>Email :</strong> {{ utilisateur_cible.email }}</li>
+    <li><strong>Âge :</strong> {{ utilisateur_cible.age }}</li>
+    <li><strong>Type de membre :</strong> {{ utilisateur_cible.type_membre }}</li>
+    <li><strong>Niveau :</strong> {{ utilisateur_cible.niveau }}</li>
+    <li><strong>Points :</strong> {{ utilisateur_cible.points }}</li>
+  </ul>
+
+  <hr>
+
+  <h3>Interactions</h3>
+  {% if interactions %}
+    <ul>
+      {% for interaction in interactions %}
+        <li>
+          {{ interaction.date|date:"d/m/Y H:i" }} – {{ interaction.objet.nom }} – {{ interaction.action }} (+{{ interaction.points_gagnes }} pt)
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucune interaction enregistrée pour cet utilisateur.</p>
+  {% endif %}
+
+  <p><a href="{% url 'liste_utilisateurs' %}">← Retour à la gestion des utilisateurs</a></p>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Statistiques{% endblock %}
+
+{% block content %}
+  <h2>Statistiques des objets connectés</h2>
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Pièce</th>
+      <th>Nombre d’objets</th>
+      <th>Nombre d’interactions</th>
+    </tr>
+    {% for ligne in stats %}
+    <tr>
+      <td>{{ ligne.piece }}</td>
+      <td>{{ ligne.nb_objets }}</td>
+      <td>{{ ligne.nb_interactions }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

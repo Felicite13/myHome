@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter un objet dans {{ piece.nom }}{% endblock %}
+
+{% block content %}
+<h2>Ajouter un objet dans la pièce : {{ piece.nom }}</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label>Nom :</label>
+  <input type="text" name="nom" required><br><br>
+
+  <label>Type (ex: four, machine à laver) :</label>
+  <input type="text" name="type_objet" required><br><br>
+
+  <label>État :</label>
+  <input type="text" name="etat"><br><br>
+
+  {# Champs spécifiques #}
+  <label>Intensité :</label>
+  <input type="number" name="intensite" min="0" max="100"><br>
+
+  <label>Couleur :</label>
+  <input type="color" name="couleur"><br>
+
+  <label>Volume :</label>
+  <input type="number" name="volume" min="0" max="100"><br>
+
+  <label>Musique :</label>
+  <input type="text" name="musique"><br>
+
+  <label>Température :</label>
+  <input type="number" name="temperature" step="0.1"><br>
+
+  <label>Mode :</label>
+  <input type="text" name="mode"><br>
+
+  <label>Position :</label>
+  <input type="text" name="position"><br>
+
+  <label>Consommation eau :</label>
+  <input type="number" name="consommation_eau"><br><br>
+
+  <button type="submit">Ajouter</button>
+</form>
+{% endblock %}

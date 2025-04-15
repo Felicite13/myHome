@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ piece.nom }}{% endblock %}
+
+{% block content %}
+  <h2>Objets dans la pièce : {{ piece.nom }}</h2>
+
+  {% if objets %}
+    {% for objet in objets %}
+      <div class="objet-card">
+        <!-- Icône dynamique selon le type d’objet -->
+        <i class="objet-icon
+          {% if objet.type_objet == 'lumière' %}fas fa-lightbulb
+          {% elif objet.type_objet == 'téléviseur' %}fas fa-tv
+          {% elif objet.type_objet == 'enceinte' %}fas fa-volume-up
+          {% elif objet.type_objet == 'thermostat' %}fas fa-thermometer-half
+          {% elif objet.type_objet == 'clé wifi' %}fas fa-wifi
+          {% elif objet.type_objet == 'détecteur de fumée' %}fas fa-fire-alt
+          {% elif objet.type_objet == 'store' or objet.type_objet == 'parasol' or objet.type_objet == 'volet' %}fas fa-window-maximize
+          {% else %}fas fa-cube{% endif %}
+        "></i>
+
+        <div class="objet-info">
+          <h4>
+            <a href="{% url 'voir_objet' objet.id %}" style="color: inherit;">{{ objet.nom }}</a>
+          </h4>
+          <span>Type : {{ objet.type_objet }}{% if objet.etat %} | État : {{ objet.etat }}{% endif %}</span>
+        </div>
+
+        {% if user.niveau == "expert" %}
+          <div>
+            <a href="{% url 'supprimer_objet' objet.id %}" style="color: red;" onclick="return confirm('Supprimer cet objet ?')">Supprimer</a>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Aucun objet disponible dans cette pièce.</p>
+  {% endif %}
+
+  {% if user.niveau == "expert" %}
+    <p style="margin-top: 20px;">
+      <a href="{% url 'ajouter_objet_piece' piece.id %}" class="btn">
+        ➕ Ajouter un objet dans cette pièce
+      </a>
+    </p>
+  {% endif %}
+{% endblock %}
+
+

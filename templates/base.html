@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Home{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<header>
+    <nav style="background-color: #eee; padding: 10px; border-bottom: 1px solid #ccc;">
+        <span style="font-weight: bold; font-size: 18px;">MY HOME</span>
+			<a href="{% url 'accueil' %}">Accueil</a>
+
+
+        {% if user.is_authenticated %}
+            | <a href="{% url 'maison' %}">Maison</a>
+            | <a href="{% url 'profil' %}">Mon profil</a>
+			| <a href="{% url 'regles' %}">Règles</a>
+
+			
+			{% if user.niveau in "avancé expert" %}
+				| <a href="{% url 'statistiques' %}">Statistiques</a>
+			{% endif %}
+
+            {% if user.niveau == "expert" %}
+                | <a href="{% url 'liste_utilisateurs' %}">Gérer les utilisateurs</a>
+            {% endif %}
+
+            |
+            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; cursor: pointer; font: inherit; padding: 0;">
+                    Se déconnecter
+                </button>
+            </form>
+        {% else %}
+            | <a href="{% url 'login' %}">Connexion</a>
+            | <a href="{% url 'register' %}">Inscription</a>
+        {% endif %}
+    </nav>
+</header>
+
+<main style="padding: 20px;">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer style="text-align: center; font-size: 12px; color: #999; margin-top: 30px;">
+    &copy; 2025 - Projet ING1
+</footer>
+
+</body>
+</html>
+
+

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+  <h1>Bienvenue sur My Home</h1>
+  <p>
+    My Home est une plateforme intelligente et conviviale qui révolutionne la manière dont vous interagissez avec votre maison. Grâce à notre interface simple et intuitive, vous pouvez gérer, en quelques clics, tous vos objets connectés répartis dans chaque pièce de votre logement.
+
+Que ce soit pour allumer une lumière, ajuster la température d’un thermostat, lancer votre enceinte préférée avec une playlist de rap français, ou encore baisser les volets roulants, My Home centralise toutes les commandes pour une expérience fluide, moderne et totalement personnalisée.
+
+Pensée pour toute la famille, la plateforme s’adapte à chaque membre selon son rôle et son niveau d’usage : les plus jeunes bénéficient d’un accès restreint et sécurisé, tandis que les parents et experts peuvent modifier les paramètres, suivre les interactions et même ajouter de nouveaux objets à leur environnement connecté.
+
+L’objectif est simple : vous offrir confort, sécurité et autonomie, tout en restant maître de votre consommation et de votre foyer.
+  </p>
+
+  <hr>
+
+  <h2>Rechercher un objet connecté</h2>
+  <form method="get">
+    <input type="text" name="recherche" placeholder="Rechercher par nom..." value="{{ texte }}">
+
+    <select name="type">
+      <option value="">-- Filtrer par type --</option>
+      {% for t in types %}
+        <option value="{{ t }}" {% if t == selected_type %}selected{% endif %}>{{ t }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit">Rechercher</button>
+  </form>
+
+  <hr>
+
+  <h3>Résultats :</h3>
+
+  {% if objets %}
+    {% for objet in objets %}
+      <div class="objet-card">
+        <i class="objet-icon
+          {% if objet.type_objet == 'lumière' %}fas fa-lightbulb
+          {% elif objet.type_objet == 'téléviseur' %}fas fa-tv
+          {% elif objet.type_objet == 'enceinte' %}fas fa-volume-up
+          {% elif objet.type_objet == 'thermostat' %}fas fa-thermometer-half
+          {% elif objet.type_objet == 'clé wifi' %}fas fa-wifi
+          {% elif objet.type_objet == 'détecteur de fumée' %}fas fa-fire-alt
+          {% elif objet.type_objet == 'store' or objet.type_objet == 'parasol' or objet.type_objet == 'volet' %}fas fa-window-maximize
+          {% else %}fas fa-cube{% endif %}
+        "></i>
+
+        <div class="objet-info">
+          <h4>{{ objet.nom }}</h4>
+          <span>Type : {{ objet.type_objet }} ({{ objet.piece.nom }}){% if objet.etat %} | État : {{ objet.etat }}{% endif %}</span>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Aucun objet trouvé pour cette recherche.</p>
+  {% endif %}
+{% endblock %}
+
+
+
